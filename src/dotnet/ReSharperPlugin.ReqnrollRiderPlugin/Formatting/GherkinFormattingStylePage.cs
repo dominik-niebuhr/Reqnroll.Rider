@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using JetBrains.Application.Components;
 using JetBrains.Application.Settings;
+using JetBrains.Application.Settings.Calculated.Interface;
 using JetBrains.Application.UI.Components;
 using JetBrains.Application.UI.Options;
 using JetBrains.Lifetimes;
@@ -51,8 +52,10 @@ namespace ReSharperPlugin.ReqnrollRiderPlugin.Formatting
                                                 [NotNull] IContextBoundSettingsStoreLive smartContext,
                                                 [NotNull] IValueEditorViewModelFactory itemViewModelFactory,
                                                 IComponentContainer container,
-                                                ISettingsToHide settingsToHide)
-            : base(lifetime, smartContext, itemViewModelFactory, container, settingsToHide)
+                                                ISettingsToHide settingsToHide,
+                                                ICalculatedSettingsSchema calculatedSettingsSchema
+                                                )
+            : base(lifetime, smartContext, itemViewModelFactory, container, settingsToHide, calculatedSettingsSchema)
         {
         }
 

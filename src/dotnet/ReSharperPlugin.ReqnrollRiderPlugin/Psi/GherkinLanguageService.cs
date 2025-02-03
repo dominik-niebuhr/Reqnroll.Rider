@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using JetBrains.Application.Components;
 using JetBrains.ReSharper.Psi;
 using JetBrains.ReSharper.Psi.CodeStyle;
 using JetBrains.ReSharper.Psi.ExtensionsAPI.Caches2;
@@ -21,10 +22,11 @@ namespace ReSharperPlugin.ReqnrollRiderPlugin.Psi
         [NotNull] private readonly GherkinCodeFormatter _gherkinCodeFormatter;
 
         public GherkinLanguageService([NotNull] GherkinLanguage language,
-                                      [NotNull] IConstantValueService constantValueService,
+                                      [NotNull] ILazy<IConstantValueService> constantValueService,
                                       [NotNull] GherkinKeywordProvider keywordProvider,
                                       [NotNull] ReqnrollSettingsProvider settingsProvider,
-                                      [NotNull] GherkinCodeFormatter gherkinCodeFormatter) : base(language, constantValueService)
+                                      [NotNull] GherkinCodeFormatter gherkinCodeFormatter
+                                      ) : base(language, constantValueService)
         {
             _keywordProvider = keywordProvider;
             _settingsProvider = settingsProvider;
